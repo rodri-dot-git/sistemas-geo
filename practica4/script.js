@@ -17,7 +17,7 @@ var escribeDatos = (pos) => {
     y.innerHTML = ""
     x.innerHTML = `Latitud: ${lat}`
     y.innerHTML = `Longitud: ${lon}`
-    initMap(x, y);
+    initMap(lat, lon);
 }
 
 var initMap = (x, y) => {
