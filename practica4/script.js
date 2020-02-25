@@ -21,5 +21,5 @@ var escribeDatos = (pos) => {
 }
 
 var initMap = (x, y) => {
-    document.getElementById("map").src = `https://maps.googleapis.com/maps/api/staticmap?center=&zoom=13&scale=1&size=600x400&maptype=roadmap&key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C${x},+${y}`;
+    document.getElementById("map").src = `https://maps.googleapis.com/maps/api/staticmap?center=&zoom=13&scale=1&size=600x600&maptype=roadmap&key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C${x},+${y}`;
 }
