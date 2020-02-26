@@ -5,17 +5,17 @@ var initMap = () => {
     };
     var map = new google.maps.Map(
         document.getElementById('map'), {
-            zoom: 14,
+            zoom: 10,
             center: pos
         });
     info = new google.maps.InfoWindow;
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((posi) => {
-            position = {
-                lat: posi.coords.latitude,
-                lng: posi.coords.latitude
+        navigator.geolocation.getCurrentPosition((position) => {
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.latitude
             }
-            info.setPosition(position)
+            info.setPosition(pos)
             info.setContent("<img src='https://www.weber.com/on/demandware.static/Sites-MX-Site/-/default/dwef5681a3/images/logo.png'>")
             info.open(map)
         });
