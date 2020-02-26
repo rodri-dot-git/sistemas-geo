@@ -5,7 +5,7 @@ var initMap = () => {
     };
     var map = new google.maps.Map(
         document.getElementById('map'), {
-            zoom: 10,
+            zoom: 16,
             center: pos
         });
     info = new google.maps.InfoWindow;
