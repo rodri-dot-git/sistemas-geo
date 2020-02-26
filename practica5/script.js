@@ -13,7 +13,7 @@ var initMap = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
             pos = {
                 lat: position.coords.latitude,
-                lng: position.coords.latitude
+                lng: position.coords.longitude
             }
             info.setPosition(pos)
             info.setContent("<img src='https://www.weber.com/on/demandware.static/Sites-MX-Site/-/default/dwef5681a3/images/logo.png'>")
