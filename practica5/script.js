@@ -10,7 +10,7 @@ var initMap = () => {
         });
     info = new google.maps.InfoWindow;
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(function (position) {
             pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.latitude
@@ -18,6 +18,7 @@ var initMap = () => {
             info.setPosition(pos)
             info.setContent("<img src='https://www.weber.com/on/demandware.static/Sites-MX-Site/-/default/dwef5681a3/images/logo.png'>")
             info.open(map)
+            map.setContent(pos)
         });
     } else {
         console.error("No permitido")
