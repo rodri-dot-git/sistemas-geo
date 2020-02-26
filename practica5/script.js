@@ -8,10 +8,6 @@ var initMap = () => {
             zoom: 4,
             center: pos
         });
-    var marker = new google.maps.Marker({
-        position: pos,
-        map: map
-    });
     var info = google.maps.InfoWindow;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((pos) => {
