@@ -10,7 +10,7 @@ var initMap = () => {
         });
     info = new google.maps.InfoWindow;
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition((position) => {
             pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
