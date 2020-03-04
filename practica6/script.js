@@ -33,6 +33,9 @@ var renderProductos = (doc) => {
             <button class="btn btn-success" onclick="editar('${doc.id}')">
             <i class="fas fa-edit"></i>
             </button>
+            <button class="btn btn-primary" id="save${doc.id}" disabled="true" onclick="save('${doc.id}')">
+            <i class="fas fa-save"></i>
+            </button>
         </td>
         <td>
             <input id="nombre${doc.id}" type="text" value="${doc.data().nombre}" readonly="true" class="form-control"/>
@@ -47,23 +50,20 @@ var renderProductos = (doc) => {
 var editar = (id) => {
     $(`#nombre${id}`).attr("readonly", false)
     $(`#codigo${id}`).attr("readonly", false)
+    $(`#save${id}`).prop("disabled", false)
 }
 
-// var editar = (id) => {
-//     console.log(nombre)
-//     id = id.trim()
-//     db.collection("productos").where("id", "==", id)
-//         .get()
-//         .then(function (querySnapshot) {
-//             querySnapshot.forEach(function (doc) {
-//                 console.log(doc.id, " => ", doc.data());
-//                 db.collection("producto").doc(doc.id).update({
-//                     nombre: $("#modalNombre").val(),
-//                     clave: $("#modalCodigo").val()
-//                 });
-//             });
-//         })
-// }
+var save = (id) => {
+    db.collection("productos")
+        .doc(id)
+        .set({
+            nombre: $(`#nombre${id}`).val(),
+            codigo: $(`#codigo${id}`).val()
+        });
+    $(`#nombre${id}`).attr("readonly", true)
+    $(`#codigo${id}`).attr("readonly", true)
+    $(`#save${id}`).prop("disabled", true)
+}
 
 var guardar = () => {
     var nombre = $("#nombre").val()
