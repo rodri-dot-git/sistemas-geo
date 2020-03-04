@@ -42,9 +42,21 @@ var renderProductos = (doc) => {
 }
 
 var guardar = () => {
+    var nombre = $("#nombre").val()
+    var codigo = $("#clave").val()
+    if(codigo.trim().length < 1)
+        alert("No puede ser vacio")
+    else if(nombre.trim().length < 1)
+        alert("No puede ser vacio")
+    else
+        commit(nombre, codigo)
+    
+}
+
+var commit = (nombre, codigo) => {
     db.collection('productos').add({
-        nombre: $("#nombre").val(),
-        codigo: $("#clave").val()
+        nombre: nombre,
+        codigo: codigo
     });
 
     $("#nombre").val('');
