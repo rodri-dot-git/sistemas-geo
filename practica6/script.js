@@ -25,14 +25,20 @@ $(document).ready(function () {
 
 var renderProductos = (doc) => {
     var item = $(`
-    <div class="row" style="margin: 5px" id="${doc.id}">
-    <button class="col-1 btn btn-danger" onclick='borrar("${doc.id}")'>
-    <i class="far fa-trash-alt"></i></button>
-    <h3>
-    <label class="col label label-default">${doc.data().nombre} ${doc.data().codigo}</label>
-    </h3>
-    </div>`)
-    $("#contenedor").append(item);
+    <tr id="${doc.id}">
+        <td>
+            <button class="btn btn-danger" onclick='borrar("${doc.id}")'>
+            <i class="far fa-trash-alt"></i>
+            </button>
+        </td>
+        <td>
+            ${doc.data().nombre}
+        </td>
+        <td>
+            ${doc.data().codigo}
+        </td>
+    </tr>`)
+    $("#tabla").append(item);
 }
 
 var guardar = () => {
