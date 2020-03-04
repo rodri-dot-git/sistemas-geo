@@ -30,27 +30,51 @@ var renderProductos = (doc) => {
             <button class="btn btn-danger" onclick='borrar("${doc.id}")'>
             <i class="far fa-trash-alt"></i>
             </button>
+            <button class="btn btn-success" onclick="editar('${doc.id}')">
+            <i class="fas fa-edit"></i>
+            </button>
         </td>
         <td>
-            ${doc.data().nombre}
+            <input id="nombre${doc.id}" type="text" value="${doc.data().nombre}" readonly="true" class="form-control"/>
         </td>
         <td>
-            ${doc.data().codigo}
+            <input id="codigo${doc.id}" type="text" value="${doc.data().codigo}" readonly="true" class="form-control"/>
         </td>
     </tr>`)
     $("#tabla").append(item);
 }
 
+var editar = (id) => {
+    $(`#nombre${id}`).attr("readonly", false)
+    $(`#codigo${id}`).attr("readonly", false)
+}
+
+// var editar = (id) => {
+//     console.log(nombre)
+//     id = id.trim()
+//     db.collection("productos").where("id", "==", id)
+//         .get()
+//         .then(function (querySnapshot) {
+//             querySnapshot.forEach(function (doc) {
+//                 console.log(doc.id, " => ", doc.data());
+//                 db.collection("producto").doc(doc.id).update({
+//                     nombre: $("#modalNombre").val(),
+//                     clave: $("#modalCodigo").val()
+//                 });
+//             });
+//         })
+// }
+
 var guardar = () => {
     var nombre = $("#nombre").val()
     var codigo = $("#clave").val()
-    if(codigo.trim().length < 1)
+    if (codigo.trim().length < 1)
         alert("No puede ser vacio")
-    else if(nombre.trim().length < 1)
+    else if (nombre.trim().length < 1)
         alert("No puede ser vacio")
     else
         commit(nombre, codigo)
-    
+
 }
 
 var commit = (nombre, codigo) => {
