@@ -64,6 +64,8 @@ var save = (id) => {
     $(`#nombre${id}`).attr("readonly", true)
     $(`#codigo${id}`).attr("readonly", true)
     $(`#save${id}`).prop("disabled", true)
+    $(`#save${id}`).css('visibility','hidden')
+
 }
 
 var guardar = () => {
