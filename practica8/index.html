@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/26f6715504.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistemas Georeferenciados</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prácticas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../practica1/index.html">Práctica 1</a>
+                        <a class="dropdown-item" href="../practica2/index.html">Práctica 2</a>
+                        <a class="dropdown-item" href="../practica3/index.html">Práctica 3</a>
+                        <a class="dropdown-item" href="../practica4/index.html">Práctica 4</a>
+                        <a class="dropdown-item" href="../practica5/index.html">Práctica 5</a>
+                        <a class="dropdown-item" href="../practica6/index.html">Práctica 6</a>
+                        <a class="dropdown-item" href="../practica7/index.html">Práctica 7</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid bg-light">
+        <div class="jumbotron">
+            <h1>
+                <i class="fas fa-dolly-flatbed"></i>
+                Firebase registro de productos
+            </h1>
+        </div>
+    </div>
+    <div class="container bg-light">
+        <div class="row">
+            <div class="col-2">
+                <button class="btn btn-primary"  data-toggle="modal" data-target="#ventanaAgregar">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <br />
+        <table class="table table-borderless" id="tabla">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Producto</td>
+                    <td>Código</td>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <!-- Modals -->
+    <div class="modal fade " id="ventanaAgregar">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nuevo producto</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregar">
+                    <div class="row">
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="nombre" required class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="codigo" required class="form-control" placeholder="Código">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+    <script src="./connection.js"></script>
+    <script src="./constantes.js"></script>
+    <script src='./producto.js'></script>
+    <script src="./interfaz.js"></script>
+</body>
+</html>
