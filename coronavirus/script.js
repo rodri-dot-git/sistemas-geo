@@ -19,7 +19,6 @@ var obtieneDatos = async () => {
     .then((response) => response.text())
     .then((data) => {
         var datos = csvJSON(data)
-        console.log(datos)
         datos.forEach(lugar => {
             let info = `
             <strong>País:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
@@ -33,7 +32,7 @@ var obtieneDatos = async () => {
             let marker = new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
-                title: `Casos: ${lugar.Confirmed}`
+                title: "Marcador"
             })
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
