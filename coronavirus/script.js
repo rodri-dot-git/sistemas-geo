@@ -33,7 +33,7 @@ var obtieneDatos = async () => {
             let marker = new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
-                title: `${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]}: ${lugar.Confirmed}`
+                title: `Casos: ${lugar.Confirmed}`
             })
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
