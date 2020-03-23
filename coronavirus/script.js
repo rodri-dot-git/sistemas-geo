@@ -21,7 +21,7 @@ var obtieneDatos = async () => {
         var datos = csvJSON(data)
         datos.forEach(lugar => {
             let info = `
-            <strong>País:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
+            <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
             <strong>Casos confirmados: </strong>${lugar.Confirmed} <br/>
             <strong>Muertes: </strong>${lugar.Deaths} <br/>
             <strong>Recuperados: </strong>${lugar.Recovered} <br/>
