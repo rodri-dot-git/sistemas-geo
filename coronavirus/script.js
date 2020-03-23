@@ -7,7 +7,7 @@ var coordenadas = {
 
 var propiedades = {
     center: coordenadas,
-    zoom: 20
+    zoom: 4
 };
 
 var obtieneDatos = async () => {
