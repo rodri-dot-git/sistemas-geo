@@ -15,16 +15,25 @@ function obtieneDatos() {
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
-    fetch(`https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
-        method: 'GET',
-        mode: 'no-cors',
-        dataType: 'text/csv'
-    })
-        .then(response => console.log(response))
-        .then(data => {
-        console.log(data)
+    // fetch(`https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
+    //     method: 'GET',
+    //     mode: 'no-cors',
+    //     dataType: 'text/csv'
+    // })
+    //     .then(response => console.log(response))
+    //     .then(data => {
+    //     console.log(data)
+    //     })
+    //     .catch(error => console.log(error))
+    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
+            method: 'GET',
+            mode: 'no-cors',
+            dataType: 'text/csv'
         })
-        .catch(error => console.log(error))
+    .then((response) => {
+        console.log(response)
+        //d3.csvParse(response.text)
+    })
 }
 
 function csvJSON(csv) {
