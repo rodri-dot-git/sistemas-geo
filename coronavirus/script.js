@@ -10,29 +10,34 @@ var propiedades = {
     zoom: 20
 };
 
-function obtieneDatos() {
+var obtieneDatos = async () => {
     map = new google.maps.Map(document.getElementById("map"), propiedades);
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
-    // fetch(`https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
-    //     method: 'GET',
-    //     mode: 'no-cors',
-    //     dataType: 'text/csv'
-    // })
-    //     .then(response => console.log(response))
-    //     .then(data => {
-    //     console.log(data)
-    //     })
-    //     .catch(error => console.log(error))
-    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
-            method: 'GET',
-            mode: 'no-cors',
-            dataType: 'text/csv'
+    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
+    .then((response) => response.text())
+    .then((data) => {
+        var datos = csvJSON(data)
+        datos.forEach(lugar => {
+            let info = `
+            <strong>País:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
+            <strong>Casos confirmados: </strong>${lugar.Confirmed} <br/>
+            <strong>Muertes: </strong>${lugar.Deaths} <br/>
+            <strong>Recuperados: </strong>${lugar.Recovered} <br/>
+            `
+            let infowindow = new google.maps.InfoWindow({
+                content: info
+            })
+            let marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
+                title: lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"] + lugar.Confirmed
+            })
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
         })
-    .then((response) => {
-        console.log(response)
-        //d3.csvParse(response.text)
     })
 }
 
