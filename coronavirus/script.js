@@ -12,7 +12,9 @@ var propiedades = {
 
 function obtieneDatos() {
     map = new google.maps.Map(document.getElementById("map"), propiedades);
-    var d = new Date().format('m-d-Y')
+    var d = new Date()
+    d.setDate(d.getDate() - 1)
+    d = d.format('m-d-Y')
     console.log(d)
     fetch(`https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
         method: 'GET',
