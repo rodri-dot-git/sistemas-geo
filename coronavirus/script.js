@@ -16,32 +16,43 @@ var obtieneDatos = async () => {
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
     fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
-    .then((response) => response.text())
-    .then((data) => {
-        var datos = csvJSON(data)
-        datos.forEach(lugar => {
-            let info = `
+        .then((response) => response.text())
+        .then((data) => {
+            var datos = csvJSON(data)
+            datos.forEach(lugar => {
+                let info = `
             <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
             <strong>Casos confirmados: </strong>${lugar.Confirmed} <br/>
             <strong>Muertes: </strong>${lugar.Deaths} <br/>
             <strong>Recuperados: </strong>${lugar.Recovered} <br/>
             `
-            let infowindow = new google.maps.InfoWindow({
-                content: info
+                let infowindow = new google.maps.InfoWindow({
+                    content: info
+                })
+                let marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
+                    title: "Marcador"
+                })
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
             })
-            let marker = new google.maps.Marker({
-                map: map,
-                position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
-                title: "Marcador"
-            })
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
         })
-    })
+        .then(setMapOnAll(null))
 }
 
-function csvJSON(csv) {
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+var csvJSON = (csv) => {
     var lines = csv.split("\n");
     var result = [];
     var headers = lines[0].split(",");
@@ -53,7 +64,6 @@ function csvJSON(csv) {
         }
         result.push(obj);
     }
-    //return result; //JavaScript object
-    return result //JSON
+    return result 
 }
 
