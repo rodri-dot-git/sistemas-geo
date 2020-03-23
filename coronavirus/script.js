@@ -15,16 +15,12 @@ function obtieneDatos() {
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
-    console.log(d)
     fetch(`https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`, {
         method: 'GET',
-        mode: 'cors',
-        headers: {
-            'Authorization': 'token 58124908239b067faae5717c9a542eb7accc176f',
-            'Access-Control-Allow-Origin':'*'
-        }
+        mode: 'no-cors',
+        dataType: 'text/csv'
     })
-        .then(response => csvJSON(response))
+        .then(response => console.log(response))
         .then(data => {
         console.log(data)
         })
