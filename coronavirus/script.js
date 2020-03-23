@@ -19,6 +19,7 @@ var obtieneDatos = async () => {
     .then((response) => response.text())
     .then((data) => {
         var datos = csvJSON(data)
+        console.log(datos)
         datos.forEach(lugar => {
             let info = `
             <strong>País:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
@@ -54,6 +55,6 @@ function csvJSON(csv) {
         result.push(obj);
     }
     //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    return result //JSON
 }
 
