@@ -1,8 +1,3 @@
-var Gdata = []
-$(document).ready(() => {
-    
-})
-
 var map;
 
 var coordenadas = {
