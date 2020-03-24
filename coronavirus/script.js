@@ -14,7 +14,7 @@ function obtieneDatos(){
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
-    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
+    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-22-2020.csv`)
     .then((response) => response.text())
     .then((data) => {
         var datos = csvJSON(data)
@@ -36,7 +36,6 @@ function obtieneDatos(){
             marker.addListener('click', () => {
                 infowindow.open(map, marker);
             })
-            console.log("marker added")
         })
     })
 }
