@@ -1,3 +1,8 @@
+var Gdata = []
+$(document).ready(() => {
+    $('#dias').attr({"max": Gdata.length})
+})
+
 var map;
 
 var coordenadas = {
@@ -18,7 +23,7 @@ $('#dias').on('change mousemove', () => {
         .then((response) => response.text())
         .then((data) => {
             var datos = csvJSON(data)
-            $('#dias').attr({"max": datos.length})
+            Gdata = datos
             datos.forEach(lugar => {
                 let info = `
             <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
