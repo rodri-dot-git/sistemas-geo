@@ -6,7 +6,7 @@ var coordenadas = {
 
 var propiedades = {
     center: coordenadas,
-    zoom: 1
+    zoom: 3
 };
 
 function obtieneDatos(){
