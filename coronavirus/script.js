@@ -31,7 +31,7 @@ function obtieneDatos(){
             })
             let marker = new google.maps.Marker({
                 map: map,
-                position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
+                position: new google.maps.LatLng(lugar.Lat, lugar.Long_),
                 title: `"${lugar.Combined_Key}"`
             })
             marker.addListener('click', () => {
