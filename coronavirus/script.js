@@ -10,6 +10,10 @@ var propiedades = {
     zoom: 2
 };
 
+$('#dias').on('change mousemove', () => {
+    console.log($('#dias').val())
+})
+
 var obtieneDatos = async () => {
     map = new google.maps.Map(document.getElementById("map"), propiedades);
     var d = new Date()
@@ -18,6 +22,8 @@ var obtieneDatos = async () => {
     fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
         .then((response) => response.text())
         .then((data) => {
+            var min = data.length * -1
+            $('#dias').attr({"min": min})
             var datos = csvJSON(data)
             datos.forEach(lugar => {
                 let info = `
