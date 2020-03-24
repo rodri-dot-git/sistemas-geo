@@ -17,8 +17,8 @@ $('#dias').on('change mousemove', () => {
     fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
         .then((response) => response.text())
         .then((data) => {
-            $('#dias').attr({"max": data.length})
             var datos = csvJSON(data)
+            $('#dias').attr({"max": datos.length})
             datos.forEach(lugar => {
                 let info = `
             <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
