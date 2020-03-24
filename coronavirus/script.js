@@ -28,7 +28,7 @@ async function obtieneDatos(){
             let infowindow = await new google.maps.InfoWindow({
                 content: info
             })
-            let marker = awair new google.maps.Marker({
+            let marker = await new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
                 title: `"${lugar.Combined_Key}"`
