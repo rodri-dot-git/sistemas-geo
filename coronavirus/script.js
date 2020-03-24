@@ -9,7 +9,7 @@ var propiedades = {
     zoom: 3
 };
 
-function obtieneDatos(){
+async function obtieneDatos(){
     map = new google.maps.Map(document.getElementById("map"), propiedades);
     var d = new Date()
     d.setDate(d.getDate() - 1)
@@ -25,15 +25,15 @@ function obtieneDatos(){
             <strong>Muertes: </strong>${lugar.Deaths} <br/>
             <strong>Recuperados: </strong>${lugar.Recovered} <br/>
             `
-            let infowindow = new google.maps.InfoWindow({
+            let infowindow = await new google.maps.InfoWindow({
                 content: info
             })
-            let marker = new google.maps.Marker({
+            let marker = awair new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
                 title: `"${lugar.Combined_Key}"`
             })
-            marker.addListener('click', function() {
+            marker.addListener('click', () => {
                 infowindow.open(map, marker);
             })
             console.log("marker added")
