@@ -11,7 +11,34 @@ var propiedades = {
 };
 
 $('#dias').on('change mousemove', () => {
-    console.log($('#dias').val())
+    var d = new Date()
+    d.setDate(d.getDate() - $('#dias').val())
+    d = d.format('m-d-Y')
+    fetch(`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${d}.csv`)
+        .then((response) => response.text())
+        .then((data) => {
+            $('#dias').attr({"max": data.length})
+            var datos = csvJSON(data)
+            datos.forEach(lugar => {
+                let info = `
+            <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
+            <strong>Casos confirmados: </strong>${lugar.Confirmed} <br/>
+            <strong>Muertes: </strong>${lugar.Deaths} <br/>
+            <strong>Recuperados: </strong>${lugar.Recovered} <br/>
+            `
+                let infowindow = new google.maps.InfoWindow({
+                    content: info
+                })
+                let marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
+                    title: "Marcador"
+                })
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            })
+        })
 })
 
 var obtieneDatos = async () => {
