@@ -75,7 +75,6 @@ var obtieneDatos = async () => {
                 });
             })
         })
-        .then(setMapOnAll(null))
 }
 
 function setMapOnAll(map) {
