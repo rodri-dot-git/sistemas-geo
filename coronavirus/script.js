@@ -1,5 +1,6 @@
 var Gdata = []
 $(document).ready(() => {
+    debugger;
     $('#dias').attr({"max": Gdata.length})
 })
 
@@ -16,6 +17,7 @@ var propiedades = {
 };
 
 $('#dias').on('change mousemove', () => {
+    setMapOnAll(null)
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
