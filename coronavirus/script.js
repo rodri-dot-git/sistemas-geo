@@ -18,7 +18,6 @@ function obtieneDatos(){
     .then((response) => response.text())
     .then((data) => {
         var datos = csvJSON(data)
-        console.log(datos)
         datos.forEach(lugar => {
             let info = `
             <strong>País o provincia:</strong> ${lugar.Combined_Key} <br/>
@@ -36,7 +35,8 @@ function obtieneDatos(){
             })
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
-            });
+            })
+            console.log("marker added")
         })
     })
 }
