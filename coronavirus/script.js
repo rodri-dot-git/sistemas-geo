@@ -55,7 +55,6 @@ var obtieneDatos = async () => {
         .then((response) => response.text())
         .then((data) => {
             var datos = csvJSON(data)
-            $('#dias').attr({"max": datos.length})
             datos.forEach(lugar => {
                 let info = `
             <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
