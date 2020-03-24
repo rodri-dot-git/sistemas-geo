@@ -11,7 +11,6 @@ var propiedades = {
 };
 
 $('#dias').on('change mousemove', () => {
-    setMapOnAll(null)
     var d = new Date()
     d.setDate(d.getDate() - 1)
     d = d.format('m-d-Y')
@@ -70,14 +69,6 @@ var obtieneDatos = async () => {
                 });
             })
         })
-}
-
-function setMapOnAll(map) {
-    setMap(map);
-}
-
-function clearMarkers() {
-    setMapOnAll(null);
 }
 
 var csvJSON = (csv) => {
