@@ -21,9 +21,10 @@ function obtieneDatos(){
         datos.forEach(lugar => {
             let info = `
             <strong>País o provincia:</strong> ${lugar.Combined_Key} <br/>
-            <strong>Casos confirmados: </strong>${lugar.Confirmed} <br/>
+            <strong>Casos confirmados totales: </strong>${lugar.Confirmed} <br/>
             <strong>Muertes: </strong>${lugar.Deaths} <br/>
             <strong>Recuperados: </strong>${lugar.Recovered} <br/>
+            <strong>Activos: </strong>${lugar.Confirmed - lugar.Deaths - lugar.Recovered} <br/>
             `
             let infowindow = new google.maps.InfoWindow({
                 content: info
