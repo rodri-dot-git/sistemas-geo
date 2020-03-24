@@ -18,6 +18,7 @@ function obtieneDatos(){
     .then((response) => response.text())
     .then((data) => {
         var datos = csvJSON(data)
+        console.log(datos)
         datos.forEach(lugar => {
             let info = `
             <strong>País o provincia:</strong> ${lugar["Province/State"].length > 0 ? lugar["Province/State"] : lugar["Country/Region"]} <br/>
