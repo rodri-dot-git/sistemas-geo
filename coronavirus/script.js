@@ -32,7 +32,7 @@ function obtieneDatos(){
             let marker = new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(lugar.Latitude, lugar.Longitude),
-                title: "${lugar.Combined_Key}"
+                title: `"${lugar.Combined_Key}"`
             })
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
