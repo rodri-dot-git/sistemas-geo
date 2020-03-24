@@ -10,7 +10,7 @@ var propiedades = {
     zoom: 2
 };
 
-var obtieneDatos = async () => {
+function obtieneDatos(){
     map = new google.maps.Map(document.getElementById("map"), propiedades);
     var d = new Date()
     d.setDate(d.getDate() - 1)
