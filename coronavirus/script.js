@@ -1,4 +1,5 @@
 var map;
+var markers = []
 var coordenadas = {
     lat: 0,
     lng: 0
@@ -34,10 +35,16 @@ function obtieneDatos(){
                 position: new google.maps.LatLng(lugar.Lat, lugar.Long_),
                 title: `${lugar.Combined_Key}"`
             })
+            markers.push(marker)
             marker.addListener('click', () => {
                 infowindow.open(map, marker);
             })
         })
+        var makerCluster = new MarkerClusterer(map, marcadores, {
+            imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+            maxZoom: 10
+
+        });
     })
 }
 function csvJSON(csv) {
