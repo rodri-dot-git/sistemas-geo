@@ -78,7 +78,3 @@ function csvJSON(csv) {
     }
     return result
 }
-
-function cambiaIdioma(){
-
-}
