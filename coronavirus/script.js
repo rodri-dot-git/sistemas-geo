@@ -5,7 +5,7 @@ const query = window.location.search
 
 const urlParams = new URLSearchParams(query)
 const idioma = urlParams.get('idioma')
-if (!idioma) {
+if (idioma.length == 0) {
     idioma = 'es'
 }
 
