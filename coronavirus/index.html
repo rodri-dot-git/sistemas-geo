@@ -51,7 +51,17 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <h1>Mapa de casos de coronavirus</h1>
+            <form action="">
+                <h1>Mapa de casos de coronavirus</h1>
+                <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="it">Italiano</option>
+                    <option value="ja">Japanese</option>
+                </select>
+            </form>
+        </div>
+        <div class="row">
             <div id="map"></div>
         </div>
     </div>
@@ -68,8 +78,8 @@
         </script>
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
     <script src="./script.js"></script>
-    <script async defer
+    <!-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&callback=obtieneDatos">
-        </script>
+        </script> -->
 </body>
 </html>

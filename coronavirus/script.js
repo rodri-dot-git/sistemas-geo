@@ -1,5 +1,20 @@
 var map
 var markers = []
+
+const query = window.location.search
+
+const urlParams = new URLSearchParams(query)
+const idioma = urlParams.get('idioma')
+if (!idioma) {
+    idioma = 'es'
+}
+
+document.getElementById('idioma').value = idioma
+
+var script = document.createElement('script')
+script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&callback=obtieneDatos&language=${idioma}`
+document.head.appendChild(script)
+
 var coordenadas = {
     lat: 0,
     lng: 0
@@ -61,4 +76,8 @@ function csvJSON(csv) {
         result.push(obj);
     }
     return result
+}
+
+function cambiaIdioma(){
+
 }
