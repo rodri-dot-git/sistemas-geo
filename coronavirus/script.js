@@ -1,13 +1,13 @@
 var map
 var markers = []
 
-
+var idioma = 'es'
 try {
     const query = window.location.search
     const urlParams = new URLSearchParams(query)
-    const idioma = urlParams.get('idioma')
+    var idioma = urlParams.get('idioma')
 } catch (error) {
-    const idioma = 'es'
+    idioma = 'es'
 }
 
 document.getElementById('idioma').value = idioma
