@@ -1,4 +1,4 @@
-var map;
+var map
 var markers = []
 var coordenadas = {
     lat: 0,
@@ -8,7 +8,7 @@ var coordenadas = {
 var propiedades = {
     center: coordenadas,
     zoom: 3
-};
+}
 
 function obtieneDatos(){
     map = new google.maps.Map(document.getElementById("map"), propiedades);
@@ -40,7 +40,8 @@ function obtieneDatos(){
                 infowindow.open(map, marker);
             })
         })
-        var makerCluster = new MarkerClusterer(map, marcadores, {
+
+        var makerCluster = new MarkerClusterer(map, markers, {
             imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
             maxZoom: 10
 
@@ -59,6 +60,5 @@ function csvJSON(csv) {
         }
         result.push(obj);
     }
-    //return result; //JavaScript object
-    return result //JSON
+    return result
 }
