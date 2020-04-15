@@ -20,7 +20,7 @@
 </body>
 <script>
     function saveTextAsFile() {
-        var textToWrite = document.getElementById('textArea').innerHTML;
+        var textToWrite = document.getElementById('mytextarea').innerHTML;
         var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
         var fileNameToSaveAs = "ecc.plist";
 
