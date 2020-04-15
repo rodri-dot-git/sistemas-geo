@@ -35,13 +35,13 @@ function initMap() {
         editable: true
     });
 
-    google.maps.event.addListener(polygon, 'insert_at', function() {
+    google.maps.event.addListener(polygon.getPath(0), 'insert_at', function() {
         console.log(polygon);
     });
-    google.maps.event.addListener(polygon, 'remove_at', function() {
+    google.maps.event.addListener(polygon.getPath(0), 'remove_at', function() {
         console.log(polygon);
     });
-    google.maps.event.addListener(polygon, 'set_at', function() {
+    google.maps.event.addListener(polygon.getPath(0), 'set_at', function() {
         console.log(polygon);
     });
 }
