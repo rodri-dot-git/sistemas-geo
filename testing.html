@@ -21,8 +21,8 @@
 <script>
     function saveTextAsFile() {
         var textToWrite = document.getElementById('mytextarea').innerHTML;
-        var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
-        var fileNameToSaveAs = "ecc.plist";
+        var textFileAsBlob = new Blob([textToWrite], { type: 'text/html' });
+        var fileNameToSaveAs = "ecc.html";
 
         var downloadLink = document.createElement("a");
         downloadLink.download = fileNameToSaveAs;
