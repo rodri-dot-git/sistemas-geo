@@ -1,76 +1,91 @@
-<html lang="es">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa 1</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        #map {
-            height: 600px;
-            width: 100%;
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps JavaScript API v3 Example: Polygon Arrays</title>
+    <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet"
+        type="text/css" />
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+        var map;
+        var infoWindow;
+
+        function initialize() {
+            var myLatLng = new google.maps.LatLng(24.886436490787712, -70.2685546875);
+            var myOptions = {
+                zoom: 5,
+                center: myLatLng,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+
+            var bermudaTriangle;
+
+            map = new google.maps.Map(document.getElementById("map_canvas"),
+                myOptions);
+
+            var triangleCoords = [
+                new google.maps.LatLng(25.774252, -80.190262),
+                new google.maps.LatLng(18.466465, -66.118292),
+                new google.maps.LatLng(32.321384, -64.75737)
+            ];
+
+            bermudaTriangle = new google.maps.Polygon({
+                paths: triangleCoords,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35
+            });
+
+            google.maps.event.addListener(bermudaTriangle, 'mouseover', function () {
+                bermudaTriangle.setOptions({
+                    editable: true
+                });
+            });
+            google.maps.event.addListener(bermudaTriangle, 'mouseout', function () {
+                bermudaTriangle.setOptions({
+                    editable: false
+                });
+            });
+
+            bermudaTriangle.setMap(map);
+
+            // Add a listener for the click event
+            google.maps.event.addListener(bermudaTriangle, 'click', showArrays);
+
+            infowindow = new google.maps.InfoWindow();
         }
-    </style>
-    <script src="https://kit.fontawesome.com/26f6715504.js" crossorigin="anonymous"></script>
+
+        function showArrays(event) {
+
+            // Since this Polygon only has one path, we can call getPath()
+            // to return the MVCArray of LatLngs
+            var vertices = this.getPath();
+
+            var contentString = "<b>Bermuda Triangle Polygon</b><br />";
+            contentString += "Clicked Location: <br />" + event.latLng.lat() + "," + event.latLng.lng() + "<br />";
+
+            // Iterate over the vertices.
+            for (var i = 0; i < vertices.length; i++) {
+                var xy = vertices.getAt(i);
+                contentString += "<br />" + "Coordinate: " + i + "<br />" + xy.lat() + "," + xy.lng();
+            }
+
+            // Replace our Info Window's content and position
+            infowindow.setContent(contentString);
+            infowindow.setPosition(event.latLng);
+
+            infowindow.open(map);
+        }  
+    </script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Sistemas Georeferenciados</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Prácticas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../practica1/index.html">Práctica 1</a>
-                        <a class="dropdown-item" href="../practica2/index.html">Práctica 2</a>
-                        <a class="dropdown-item" href="../practica3/index.html">Práctica 3</a>
-                        <a class="dropdown-item" href="../practica4/index.html">Práctica 4</a>
-                        <a class="dropdown-item" href="../practica5/index.html">Práctica 5</a>
-                        <a class="dropdown-item" href="../practica6/index.html">Práctica 6</a>
-                        <a class="dropdown-item" href="../practica7/index.html">Práctica 7</a>
-                        <a class="dropdown-item" href="../practica8/index.html">Práctica 8</a>
-                        <a class="dropdown-item" href="../practica9/index.html">Práctica 9</a>
-                        <a class="dropdown-item" href="../practica10/index.html">Práctica 10</a>
-                        <a class="dropdown-item" href="../coronavirus/index.html">Coronavirus</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Google Maps en Bootstrap</h1>
-                    <div id="map"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="./script.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&callback=initMap">
-    </script>
+<body onload="initialize()">
+    <div id="map_canvas"></div>
 </body>
 
 </html>
