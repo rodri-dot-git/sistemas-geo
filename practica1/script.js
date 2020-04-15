@@ -34,14 +34,15 @@ function initMap() {
         fillOpacity: 0.35,
         editable: true
     });
-
-    google.maps.event.addListener(polygon.getPath(0), 'insert_at', function() {
-        console.log(polygon);
-    });
-    google.maps.event.addListener(polygon.getPath(0), 'remove_at', function() {
-        console.log(polygon);
-    });
-    google.maps.event.addListener(polygon.getPath(0), 'set_at', function() {
-        console.log(polygon);
+    google.maps.event.addListener(polygon, 'click', function() {
+        google.maps.event.addListener(polygon.getPath(0), 'insert_at', function() {
+            console.log(polygon);
+        });
+        google.maps.event.addListener(polygon.getPath(0), 'remove_at', function() {
+            console.log(polygon);
+        });
+        google.maps.event.addListener(polygon.getPath(0), 'set_at', function() {
+            console.log(polygon);
+        });
     });
 }
