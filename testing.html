@@ -6,7 +6,9 @@
 
 <body>
     <h1>TinyMCE Quick Start Guide</h1>
-    <textarea id="mytextarea" name="mytextarea">Hello, World!</textarea>
+    <form>
+        <textarea id="mytextarea" name="mytextarea">Hello, World!</textarea>
+    </form>
     <button onclick="saveTextAsFile()"> save </button>
 </body>
 <script src='https://cdn.tiny.cloud/1/0xkzkg2c6aoc8uuai3rcxth39uzdftsqpnh853ph03tjdqth/tinymce/5/tinymce.min.js'
@@ -14,9 +16,9 @@
 <script>
     tinymce.init({
         selector: '#mytextarea'
-    });
+        });
     function saveTextAsFile() {
-        var textToWrite = tinymce.get('#mytextarea').getContent()
+        var textToWrite = tinyMCE.get('mytextarea').getContent()
         var textFileAsBlob = new Blob([textToWrite], { type: 'text/html' });
         var fileNameToSaveAs = "ecc.html";
 
@@ -33,7 +35,6 @@
             downloadLink.style.display = "none";
             document.body.appendChild(downloadLink);
         }
-
         downloadLink.click();
     }
 
