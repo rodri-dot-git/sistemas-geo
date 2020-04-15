@@ -24,18 +24,8 @@ function initMap() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: "#FF0000",
-        fillOpacity: 0.35
-    });
-
-    google.maps.event.addListener(bermudaTriangle, 'mouseover', function () {
-        bermudaTriangle.setOptions({
-            editable: true
-        });
-    });
-    google.maps.event.addListener(bermudaTriangle, 'mouseout', function () {
-        bermudaTriangle.setOptions({
-            editable: false
-        });
+        fillOpacity: 0.35,
+        editable: true
     });
 
     bermudaTriangle.setMap(map);
