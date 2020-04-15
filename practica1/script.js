@@ -1,23 +1,16 @@
 function initMap() {
-    // The location of Uluru
-    var uluru = {
-        lat: 25.774,
-        lng: -80.190
+    var myLatLng = new google.maps.LatLng(24.886436490787712, -70.2685546875);
+    var myOptions = {
+        zoom: 5,
+        center: myLatLng,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
     };
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-    });
-    // The marker, positioned at Uluru
-    // var marker = new google.maps.Marker({
-    //     position: uluru,
-    //     map: map
-    // });
 
-    var infoWindow;
     var bermudaTriangle;
+
+    map = new google.maps.Map(document.getElementById("map"),
+        myOptions);
+    var infoWindow;
 
     var triangleCoords = [
         new google.maps.LatLng(25.774252, -80.190262),
