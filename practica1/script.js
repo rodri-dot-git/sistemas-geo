@@ -16,7 +16,7 @@ function initMap() {
     //     map: map
     // });
 
-
+    var infoWindow;
     var bermudaTriangle;
 
     map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -77,4 +77,3 @@ function showArrays(event) {
 
     infowindow.open(map);
 }  
-}
