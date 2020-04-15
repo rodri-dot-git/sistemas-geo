@@ -24,7 +24,7 @@ function initMap() {
     ];
 
       // Construct a draggable red triangle with geodesic set to true.
-    new google.maps.Polygon({
+    var polygon = new google.maps.Polygon({
         map: map,
         paths: redCoords,
         strokeColor: '#FF0000',
@@ -33,5 +33,15 @@ function initMap() {
         fillColor: '#FF0000',
         fillOpacity: 0.35,
         editable: true
+    });
+
+    google.maps.event.addListener(polygon, 'insert_at', function() {
+        console.log(polygon);
+    });
+    google.maps.event.addListener(polygon, 'remove_at', function() {
+        console.log(polygon);
+    });
+    google.maps.event.addListener(polygon, 'set_at', function() {
+        console.log(polygon);
     });
 }
