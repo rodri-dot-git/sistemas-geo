@@ -19,9 +19,6 @@ function initMap() {
     var infoWindow;
     var bermudaTriangle;
 
-    map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
-
     var triangleCoords = [
         new google.maps.LatLng(25.774252, -80.190262),
         new google.maps.LatLng(18.466465, -66.118292),
