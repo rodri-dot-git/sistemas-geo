@@ -56,7 +56,17 @@ function obtieneDatos(){
                 infowindow.open(map, marker);
             })
         })
-
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "http://ncov.sinave.gob.mx/Mapa.aspx/Grafica22",
+            data: "{}",
+            datatype: "json",
+            success: (result) => console.log(result),
+            error: function ajaxError(result) {
+                console.log(result);
+            }
+        });
         var makerCluster = new MarkerClusterer(map, markers, {
             imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
             maxZoom: 10
