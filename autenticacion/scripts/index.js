@@ -5,7 +5,6 @@ const datosdelacuenta = document.querySelector('.datosdelacuenta');
 const configuraMenu = (user) => {
     if (user) {
         db.collection('usuarios').doc(user.uid).get().then(doc => {
-            console.log(doc.data())
             const html = `
                 <p>Nombre: ${ user.displayName}</p>
                 <p>Correo: ${ user.email}</p>
