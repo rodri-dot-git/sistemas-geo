@@ -7,6 +7,7 @@ const configuraMenu = (user) => {
 
 
         db.collection('usuarios').doc(user.uid).get().then(doc => {
+            console.log(doc)
             const html = `
                 <p>Nombre: ${ doc.data().nombre}</p>
                 <p>Correo: ${ user.email}</p>
@@ -37,7 +38,6 @@ const obtienePlatillos = (data) => {
 
         data.forEach(doc => {
             const platillo = doc.data();
-            console.log(platillo);
             const columna = `
                 <div class="col-12 col-md-4">
                     <img src="imagenes/${platillo.imagen}" alt="${platillo.nombre}">
