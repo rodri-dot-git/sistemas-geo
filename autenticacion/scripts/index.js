@@ -7,10 +7,8 @@ const configuraMenu = (user) => {
         db.collection('usuarios').doc(user.uid).get().then(doc => {
             console.log(doc.data())
             const html = `
-                <p>Nombre: ${ doc.data().nombre}</p>
+                <p>Nombre: ${ user.displayName}</p>
                 <p>Correo: ${ user.email}</p>
-                <p>Teléfono: ${ doc.data().telefono}</p>
-                <p>Dirección: ${ doc.data().direccion}</p>
             `;
             datosdelacuenta.innerHTML = html;
         });
