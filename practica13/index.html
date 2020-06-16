@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Watch Position</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/26f6715504.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistemas Georeferenciados</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prácticas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../practica1/index.html">Práctica 1</a>
+                        <a class="dropdown-item" href="../practica2/index.html">Práctica 2</a>
+                        <a class="dropdown-item" href="../practica3/index.html">Práctica 3</a>
+                        <a class="dropdown-item" href="../practica4/index.html">Práctica 4</a>
+                        <a class="dropdown-item" href="../practica5/index.html">Práctica 5</a>
+                        <a class="dropdown-item" href="../practica6/index.html">Práctica 6</a>
+                        <a class="dropdown-item" href="../practica7/index.html">Práctica 7</a>
+                        <a class="dropdown-item" href="../practica8/index.html">Práctica 8</a>
+                        <a class="dropdown-item" href="../practica9/index.html">Práctica 9</a>
+                        <a class="dropdown-item" href="../practica10/index.html">Práctica 10</a>
+                        <a class="dropdown-item" href="../practica11/index.html">Dark Mode</a>
+                        <a class="dropdown-item" href="../coronavirus/index.html">Coronavirus</a>
+                        <a class="dropdown-item" href="#">WatchPosition</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container text-center small">
+        <div class="container-fluid m-2 text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Controles de Mapa</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div id="mapa1 map"></div>
+                    <p>Mapa con controles estándar</p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="mapa2 map"></div>
+                    <p>Mapa sin controles</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div id="mapa3 map"></div>
+                    <p>Mapa con zoom desactivado</p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="mapa4 map"></div>
+                    <p>Mapa con ControlOptions</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div id="mapa5 map"></div>
+                    <p>Mapa con ControlPosition</p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="mapa6 map"></div>
+                    <p>Mapa con Restricting MapBounds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    <script src="./script.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Baz4xew2xXaKDxZPdRqmKWg0XidiktE&callback=obtieneDatos">
+        </script>
+</body>
+
+</html>
