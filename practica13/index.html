@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        .map {
-            height: 800px;
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #mapa1, #mapa2, #mapa3, #mapa4, #mapa5, #mapa6 {
             width: 100%;
+            height: 340px;
         }
     </style>
     <script src="https://kit.fontawesome.com/26f6715504.js" crossorigin="anonymous"></script>
@@ -61,31 +66,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa1"></div>
                     <p>Mapa con controles estándar</p>
                 </div>
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa2"></div>
                     <p>Mapa sin controles</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa3"></div>
                     <p>Mapa con zoom desactivado</p>
                 </div>
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa4"></div>
                     <p>Mapa con ControlOptions</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa5"></div>
                     <p>Mapa con ControlPosition</p>
                 </div>
-                <div class="col-12 col-md-6 map">
+                <div class="col-12 col-md-6">
                     <div id="mapa6"></div>
                     <p>Mapa con Restricting MapBounds</p>
                 </div>
