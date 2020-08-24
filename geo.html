@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcadores</title>
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/854/854904.svg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+
+      #map {
+        width: 100%;
+        height: 500px;
+      }
+    </style>
+</head>
+<body>
+            <div id="map"></div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNe-mjWzhEUSwDH7BvgJWtMxZUZmmFI2U&callback=mapStart"
+async defer></script>
+
+<script>
+     function mapStart() {
+        var coordinates = [
+            {
+                location: {
+                    lat: 21.115767,
+                 lng: -101.657768
+                },
+          name: "Universidad"
+        },
+        {
+            location: {
+            lat: 26.8998,
+          lng: -101.4196
+            },
+          name: "Monclova"
+        },
+        {
+            location: {
+            lat: 21.158361,
+          lng: -101.719872
+            },
+          name: "Casa pablo"
+        }
+    ]
+        
+  
+        var map = new google.maps.Map(
+          document.getElementById('map'),
+          {
+              
+            center: {lat: 22.434937 , lng: -102.278387},
+            zoom: 2
+          }
+        );
+
+        var icono = {
+        url : "https://cdn.discordapp.com/attachments/691737589689876482/747541198817722388/mondea.png",
+        scaledSize: new google.maps.Size(50, 50),
+        origin:  new google.maps.Point(0, 0),
+        anchor : new google.maps.Point(0, 0)
+    };
+
+    coordinates.forEach(element => {
+
+
+            let info = 
+            `<p><strong>Lugar:</strong> ${element.name} </p>`;
+            
+            let infowindow = new google.maps.InfoWindow({
+                content: info
+            })
+
+            let marker = new google.maps.Marker({
+                map: map,
+                position: element.location,
+                icon: icono
+            })
+            marker.addListener('click', () => {
+                infowindow.open(map, marker);
+            })
+      });
+        
+      }
+  
+</script>
+    
+</body>
+
+
+
+</html>
