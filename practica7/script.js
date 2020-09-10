@@ -1,11 +1,11 @@
-var map;
+const map;
 
-var coordenadas = {
+const coordenadas = {
     lat: 26.926088,
     lng: -101.424841
 };
 
-var propiedades = {
+const propiedades = {
     center: coordenadas,
     zoom: 20
 };
@@ -20,10 +20,6 @@ function obtieneDatos() {
     });
 }
 
-var mapLeaflet = L.map('mapLeaflet').setView([26.926088, -101.424841], 13);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mapLeaflet);
+const mapLeaflet = L.map('mapLeaflet').setView([26.926088, -101.424841], 20);
 
 L.marker([26.926088, -101.424841]).addTo(map)
