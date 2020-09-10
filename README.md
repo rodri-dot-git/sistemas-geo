@@ -4,7 +4,7 @@
 2. [x] [Practica de poligonos](https://geo.deleoncastilla.co/semestre7/actividad2)
 3. [ ] [Practica de marcadores](https://geo.deleoncastilla.co/semestre7/actividad3)
 
-# Integrantes de equipo
+### Integrantes de equipo
 - Diego de La Vega Escalante
 - Rodrigo Eugenio de León Castilla
 - José Pablo Gutiérrez Paliza
