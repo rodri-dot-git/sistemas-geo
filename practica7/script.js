@@ -1,8 +1,8 @@
 var map;
 
 var coordenadas = {
-    lat: 0,
-    lng: 0
+    lat: 26.926088,
+    lng: -101.424841
 };
 
 var propiedades = {
@@ -13,47 +13,17 @@ var propiedades = {
 function obtieneDatos() {
     map = new google.maps.Map(document.getElementById("map"), propiedades);
 
-    var icono = {
-        url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
-        scaledSize: new google.maps.Size(50, 50), // scaled size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(0, 0) // anchor
-    };
-
-    var marker = new google.maps.Marker({
-        position: { lat: 0, lng: 0 },
-        icon: icono,
+    new google.maps.Marker({
+        position: coordenadas,
         scaledSize: new google.maps.Size(50, 50),
         map: map
     });
-
-    if (navigator.geolocation) {
-        setInterval(function () {
-            moverPosicion(marker);
-        }, 3000);
-    }
 }
 
-function moverPosicion(marker) {
-    navigator.geolocation.getCurrentPosition(posicion => {
-        var pos = {
-            lat: posicion.coords.latitude,
-            lng: posicion.coords.longitude
-        };
+var map = L.map('mapLeaflet').setView([26.926088, -101.424841], 13);
 
-        marker.setPosition(
-            new google.maps.LatLng(
-                posicion.coords.latitude,
-                posicion.coords.longitude
-            )
-        );
-        map.panTo(
-            new google.maps.LatLng(
-                posicion.coords.latitude,
-                posicion.coords.longitude
-            )
-        );
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-        map.setCenter(pos);
-    });
-}
+L.marker([26.926088, -101.424841]).addTo(map)
