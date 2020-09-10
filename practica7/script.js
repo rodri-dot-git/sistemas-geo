@@ -1,4 +1,4 @@
-const map;
+let map;
 
 const coordenadas = {
     lat: 26.926088,
