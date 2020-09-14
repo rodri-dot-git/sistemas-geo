@@ -33,9 +33,11 @@ $('#txtNumero').change(function (e) {
 });
 
 map.on('dblclick', function (e) {
-    let latLng = map.mouseEventToLatLng(e.originalEvent)
-    puntos.push({ lat: latLng.lat, lng: latLng.lng });
-    L.marker([latLng.lat, latLng.lng], { icon: newIcon }).addTo(map)
+    if (puntos.length < 10){
+        let latLng = map.mouseEventToLatLng(e.originalEvent)
+        puntos.push({ lat: latLng.lat, lng: latLng.lng });
+        L.marker([latLng.lat, latLng.lng], { icon: newIcon }).addTo(map)
+    }
 
     if (puntos.length === 10) {
         const polygonPoints = [];
