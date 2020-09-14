@@ -10,8 +10,7 @@ var puntos = [];
 const newIcon = L.icon({
     iconUrl: './Map_marker.png',
     iconSize: [64, 64],
-    iconAnchor: [64, 64],
-    popupAnchor: [-3, -76]
+    iconAnchor: [32, 64],
 })
 
 const mapProperties = {
@@ -29,22 +28,23 @@ map.doubleClickZoom.disable();
 
 $('#txtNumero').change(function (e) {
     e.preventDefault();
-    numeroPuntos = document.getElementById('txtNumero').value;
     contador = 0;
     puntos = [];
 });
 
 map.on('dblclick', function (e) {
     let latLng = map.mouseEventToLatLng(e.originalEvent)
-    contador++;
     puntos.push({ lat: latLng.lat, lng: latLng.lng });
     L.marker([latLng.lat, latLng.lng], { icon: newIcon }).addTo(map)
 
-    if (contador == numeroPuntos && contador >= 10) {
-        var polygonPoints = [];
+    if (puntos.length === 10) {
+        const polygonPoints = [];
+        let coordenadas = "";
         puntos.forEach(element => {
             polygonPoints.push([element.lat, element.lng])
+            coordenadas += `lat: ${element.lat}, long: ${element.lng}`;
         });
+        alert(coordenadas);
         L.polygon(polygonPoints).addTo(map);
         L.polygon(polygonPoints).addTo(map2);
         L.tileLayer(tilesArray[Math.floor(Math.random() * 3)], mapProperties).addTo(map);  
