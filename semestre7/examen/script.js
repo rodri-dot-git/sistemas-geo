@@ -18,11 +18,7 @@ const mapProperties = {
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 };
 const map = L.map('mapLeaflet').setView([37.786617, -122.404654], 5);
-const map2 = L.map('mapLeaflet2').setView([37.786617, -122.404654], 5);
-
 L.tileLayer(tilesProvider, mapProperties).addTo(map);
-
-L.tileLayer(tilesProvider, mapProperties).addTo(map2);
 
 map.doubleClickZoom.disable();
 
@@ -42,15 +38,16 @@ map.on('dblclick', function (e) {
     if (puntos.length === 10) {
         const polygonPoints = [];
         let coordenadas = "";
+        const map2 = L.map('mapLeaflet2').setView([37.786617, -122.404654], 5);
+        L.tileLayer(tilesArray[Math.floor(Math.random() * 3)], mapProperties).addTo(map2);  
         puntos.forEach(element => {
             polygonPoints.push([element.lat, element.lng])
             coordenadas += `lat: ${element.lat}, long: ${element.lng}`;
+            L.marker([element.lat, element.lng], { icon: newIcon }).addTo(map2)
         });
         alert(coordenadas);
         L.polygon(polygonPoints).addTo(map);
-        L.polygon(polygonPoints).addTo(map2);
         L.tileLayer(tilesArray[Math.floor(Math.random() * 3)], mapProperties).addTo(map);  
-        L.tileLayer(tilesArray[Math.floor(Math.random() * 3)], mapProperties).addTo(map2);  
     }
 
 })
