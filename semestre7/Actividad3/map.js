@@ -587,8 +587,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   zoomOffset: -1
 }).addTo(map);
 
-
-// control that shows state info on hover
 var info = L.control();
 
 info.onAdd = function (map) {
@@ -605,8 +603,6 @@ info.update = function (props) {
 
 info.addTo(map);
 
-
-// get color depending on population density value
 function getColor(d) {
   return d > 1000 ? '#A1E500' :
     d > 500 ? '#3DDF00' :
@@ -671,7 +667,6 @@ geojson = L.geoJson(statesData, {
 }).addTo(map);
 
 map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
 
 var legend = L.control({ position: 'bottomright' });
 
