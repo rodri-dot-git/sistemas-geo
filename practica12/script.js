@@ -34,7 +34,7 @@ function obtieneDatos() {
     var positionOptions = {
         enableHighAccuracy: true,
         timeout: 10 * 1000,
-        maximumAge: 30 * 1000 
+        maximumAge: 30 * 1000
     };
 
 
@@ -58,11 +58,11 @@ function obtieneDatos() {
 
 
                 const html = `
-                    <p>Coordenadas: ${ coordenadas}</p>
-                    <p>Exactitud: ${ exactitud}</p>
-                    <p>Altitud: ${ altitud}</p>
-                    <p>Velocidad: ${ velocidad}</p>
-                    <p>Fecha y hora: ${ fechayhora}</p>
+                    <p>Coordenadas: ${coordenadas}</p>
+                    <p>Exactitud: ${exactitud}</p>
+                    <p>Altitud: ${altitud}</p>
+                    <p>Velocidad: ${velocidad}</p>
+                    <p>Fecha y hora: ${fechayhora}</p>
                 `;
 
                 const datos = document.getElementById('datos');
