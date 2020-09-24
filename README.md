@@ -6,6 +6,7 @@
 4. [x] [Practica GeoJSON](https://geo.deleoncastilla.co/semestre7/actividad3)
 5. [x] [Practica Poligonos par y firebase](https://geo.deleoncastilla.co/semestre7/actividad4)
 6. [x] [Practica Geolocation](https://geo.deleoncastilla.co/semestre7/actividad5)
+7. [x] [Practica Seleccion de tiles](https://geo.deleoncastilla.co/semestre7/actividad2.2)
 
 
 ### Integrantes de equipo
