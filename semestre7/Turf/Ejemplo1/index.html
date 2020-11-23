@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Turf</title>
+</head>
+
+<body>
+    <div class="jumbotron text-center mb-0 p-2">
+        <h1 class="mb-5">Turf JS</h1>
+        <h3 id="txtArea">Area del poligono: </h3>
+
+    </div>
+
+    <div id='map' style='width: 100%; height: 700px;'></div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ29vZHYiLCJhIjoiY2tkcm1hdzRnMGVqNTJ3cWw0aWhzOTNwZCJ9.UkI66nmaRg6Q37JFpiWKGw';
+        // Create a map in the div #map
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 2 // starting zoom
+        });
+
+        var coordinates = [[
+            [-67.13734351262877, 45.137451890638886],
+            [-66.96466, 44.8097],
+            [-68.03252, 44.3252],
+            [-69.06, 43.98],
+            [-70.11617, 43.68405],
+            [-70.64573401557249, 43.090083319667144],
+            [-70.75102474636725, 43.08003225358635],
+            [-70.79761105007827, 43.21973948828747],
+            [-70.98176001655037, 43.36789581966826],
+            [-70.94416541205806, 43.46633942318431],
+            [-71.08482, 45.3052400000002],
+            [-70.6600225491012, 45.46022288673396],
+            [-70.30495378282376, 45.914794623389355],
+            [-70.00014034695016, 46.69317088478567],
+            [-69.23708614772835, 47.44777598732787],
+            [-68.90478084987546, 47.184794623394396],
+            [-68.23430497910454, 47.35462921812177],
+            [-67.79035274928509, 47.066248887716995],
+            [-67.79141211614706, 45.702585354182816],
+            [-67.13734351262877, 45.137451890638886]
+        ]];
+
+        var polygon = turf.polygon(coordinates);
+
+        var area = turf.area(polygon);
+        $('#txtArea').text(`Área del poligono: ${numberWithCommas(area)} m2`);
+        map.on('load', function () {
+            map.addSource('maine', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Polygon',
+                        'coordinates': coordinates
+                    }
+                }
+            });
+            map.addLayer({
+                'id': 'maine',
+                'type': 'fill',
+                'source': 'maine',
+                'layout': {},
+                'paint': {
+                    'fill-color': '#3d83fc',
+                    'fill-opacity': 0.8
+                }
+            });
+        });
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+</body>
+
+</html>
