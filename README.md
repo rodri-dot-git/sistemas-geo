@@ -7,6 +7,7 @@
 5. [x] [Practica Poligonos par y firebase](https://geo.deleoncastilla.co/semestre7/actividad4)
 6. [x] [Practica Geolocation](https://geo.deleoncastilla.co/semestre7/actividad5)
 7. [x] [Practica Seleccion de tiles](https://geo.deleoncastilla.co/semestre7/actividad2.2)
+8. [X] [Ejemplo 1 Turf (Area de poligono)](https://geo.deleoncastilla.co/semestre7/turf/ejemplo1/index.html)
 
 
 ### Integrantes de equipo
