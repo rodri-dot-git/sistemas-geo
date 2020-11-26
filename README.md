@@ -9,6 +9,7 @@
 7. [x] [Practica Seleccion de tiles](https://geo.deleoncastilla.co/semestre7/actividad2.2)
 8. [X] [Ejemplo 1 Turf (Area de poligono)](https://geo.deleoncastilla.co/semestre7/turf/ejemplo1/index.html)
 9. [X] [Ejemplo 2 Turf (Centro del poligono)](https://geo.deleoncastilla.co/semestre7/turf/ejemplo2/index.html)
+9. [X] [Ejemplo 3 Turf (Centro del poligono)](https://geo.deleoncastilla.co/semestre7/turf/ejemplo3/index.html)
 
 
 ### Integrantes de equipo
